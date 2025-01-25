@@ -1,0 +1,24 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  #service_type: nodeport
+  # default nodeport_port is 30080
+  #nodeport_port: 30080
+  secret_key_secret: awx-secret-key
+#  old_postgres_configuration_secret: awx-old-postgres-configuration
+#  postgres_configuration_secret: awx-postgres-configuration
+  admin_password_secret: awx-admin-password
+  admin_user: admin_user
+  admin_email: monitoring@domain.nl
+  hostname: awx.domain.nl
+  ingress_type: ingress
+  ingress_tls_secret: awx-tls
+  ingress_annotations: |
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect@kubernetescrd
+  no_log: true
+  ee_extra_env: |
+    - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
+      value: enabled

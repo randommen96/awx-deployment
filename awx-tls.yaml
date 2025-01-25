@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-tls
+  namespace: awx
+type: kubernetes.io/tls
+data:
+  tls.crt: insert cert
+  tls.key: insert key

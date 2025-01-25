@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-postgres-configuration
+  namespace: awx
+stringData:
+  database: awx-db
+  username: awx-dbuser
+  password: createapasswordhere
+  type: managed
+type: Opaque
